@@ -11,9 +11,6 @@ export const client = createClient({
 
 const builder = imageUrlBuilder(client);
 
-// eslint-disable-next-line no-unused-vars
-function urlFor(source) {
-    return builder.image(source)
-}
+export const urlFor = (source) => builder.image(source);
 
 export default client
