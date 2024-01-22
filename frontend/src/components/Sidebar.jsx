@@ -2,19 +2,10 @@ import { NavLink, Link } from 'react-router-dom'
 import { RiHomeFill } from 'react-icons/ri'
 import { IoIosArrowForward } from 'react-icons/io'
 import logo from '../assets/pinit.png'
+import {categories } from '../utils/data'
 
 const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize';
-const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-2 border-black transition-all duration-200 ease-in-out capitalize';
-
-const categories = [
-  { name: 'Fashion' },
-  { name: 'Plants' },
-  { name: 'Cars' },
-  { name: 'Motrcycles' },
-  { name: 'Cats' },
-  { name: 'Photography' },
-  { name: 'Other' },
-]
+const isActiveStyle = 'flex items-center bg-sky-400 px-5 py-4 gap-3 text-white font-bold border-r-2 border-sky-600 transition-all duration-200 ease-in-out capitalize';
 
 const Sidebar = ({ user, closeToggle }) => {
   const handleCloseSidebar = () => {
@@ -40,7 +31,7 @@ const Sidebar = ({ user, closeToggle }) => {
             <RiHomeFill />
             Home
           </NavLink>
-          <h3 className='mt-2 px-5 text-base 2xl:text-xl'>Discover Categories</h3>
+          <h3 className='mt-2 px-5 text-base font-semibold 2xl:text-xl'>Discover Categories</h3>
           {categories.slice(0, categories.length - 1).map((category) => (
             <NavLink
               to={`/category/${category.name}`}
@@ -48,6 +39,7 @@ const Sidebar = ({ user, closeToggle }) => {
               onClick={handleCloseSidebar}
               key={category.name}
             >
+              <img src={category.image} className='w-8 h-8 rounded-full shadow-sm' alt='category' />
               {category.name}
             </NavLink>
           ))}
@@ -61,6 +53,7 @@ const Sidebar = ({ user, closeToggle }) => {
         >
           <img src={user.image} className='w-10 h-10 rounded-full' alt='user-profile' />
           <p>{user.userName}</p>
+          <IoIosArrowForward />
         </Link>
       )}
     </div>
